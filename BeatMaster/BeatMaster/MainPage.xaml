@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BeatMaster" x:Name="MainPage  "
+             x:Class="BeatMaster.MainPage"  >
+  
+  <Grid x:Name="grdMain"   RowSpacing="10" ColumnSpacing="10" BindingContext="{local:MainMVVM}" >
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="100" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="3*" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="3*" />
+    </Grid.ColumnDefinitions>
+    
+    <Label
+        Text="Beat Master -alpha-"
+        TextColor="Lime" HorizontalTextAlignment="Center" FontSize="Large"
+        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+ 
+    <ListView Grid.Row="1" Grid.Column="0" x:Name="lvIntro"   ItemsSource="{Binding introItems}" >
+      <ListView.ItemTemplate  >
+        <DataTemplate >
+          <ViewCell>
+            <!--<ViewCell.ContextActions>
+              <MenuItem  Command="{Binding OnMore}" Text="More" />
+              <MenuItem Command="{Binding OnDelete}" Text="Delete" IsDestructive="True" />
+            </ViewCell.ContextActions>-->
+            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+              <StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical" >
+                <Label Text="{Binding Name}" VerticalTextAlignment="Center" FontSize="10" />
+                <Label Text="hint: trigger a context action" VerticalTextAlignment="Center" FontSize="8" />
+              </StackLayout>
+              <Button Text=">" Command="{Binding Path=PlaySong}" />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+
+    <ListView Grid.Row="1" Grid.Column="2" x:Name="lvVerse" ItemsSource="{Binding introItems}" >
+      <ListView.ItemTemplate  >
+        <DataTemplate >
+          <ViewCell>
+            <ViewCell.ContextActions>
+              <MenuItem   Text="More" />
+              <MenuItem  Text="Delete" IsDestructive="True" />
+            </ViewCell.ContextActions>
+            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+              <StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                <Label Text="{Binding Name}" VerticalTextAlignment="Center" FontSize="10" />
+                <Label Text="hint: trigger a context action" VerticalTextAlignment="Center" FontSize="8" />
+              </StackLayout>
+              <Button Text=">" Command="{Binding Path=PlaySong}"   />
+            </StackLayout>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView> 
+  </Grid>
+  <!--<Grid
+    RowSpacing="10"
+    ColumnSpacing="10">
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="100" />
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="Auto" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="100" />
+    </Grid.ColumnDefinitions>
+
+    <Label
+        Text="Autosized cell"
+        TextColor="White"
+        BackgroundColor="Blue"
+        Grid.Row="0" Grid.Column="0"/>
+
+    <BoxView
+        Color="Silver"
+        HeightRequest="0"
+        Grid.Row="0" Grid.Column="1" />
+
+    <BoxView
+        Color="Teal"
+        Grid.Row="1" Grid.Column="0" />
+
+    <Label
+        Text="Leftover space"
+        TextColor="Purple"
+        BackgroundColor="Aqua"
+        XAlign="Center"
+        YAlign="Center"
+	Grid.Row="1" Grid.Column="1"/>
+
+    <Label
+        Text="Span two rows (or more if you want)"
+        TextColor="Yellow"
+        BackgroundColor="Blue"
+        XAlign="Center"
+        YAlign="Center"
+        Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"/>
+
+    <Label
+        Text="Span two columns"
+        TextColor="Blue"
+        BackgroundColor="Yellow"
+        XAlign="Center"
+        YAlign="Center"
+        Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+    <Label Text="Fixed 100x100"
+        TextColor="Aqua"
+        BackgroundColor="Red"
+        XAlign="Center"
+        YAlign="Center"
+        Grid.Row="2" Grid.Column="2"/>
+
+  </Grid>-->
+</ContentPage>
