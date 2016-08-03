@@ -6,9 +6,9 @@
 
   <Grid x:Name="grdMain" BackgroundColor="Black"   RowSpacing="3" ColumnSpacing="3" BindingContext="{local:CategoryPickerMVVM}" >
     <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
-      <RowDefinition Height="100" />
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
@@ -22,8 +22,8 @@
         TextColor="Lime" HorizontalTextAlignment="Center" FontSize="Large"
         Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
 
-    <Button Text="Rock" Command="{Binding SelectCategory}" WidthRequest = "30" HeightRequest = "30" Grid.Row="1" Grid.Column="0" x:Name="btnRock"  />
-    <Button Text="Pop" Command="{Binding SelectCategory}"  WidthRequest = "30" HeightRequest = "30" Grid.Row="1" Grid.Column="1" x:Name="btnPop"  />
-    <Button Text="Latino" Command="{Binding SelectCategory}" WidthRequest = "30" HeightRequest = "30" Grid.Row="1" Grid.Column="2" x:Name="btnLatino"  />
+    <Button Text="Rock" Command="{Binding SelectCategory}"  Grid.Row="1" Grid.Column="0" x:Name="btnRock"  />
+    <Button Text="Pop" Command="{Binding SelectCategory}"    Grid.Row="1" Grid.Column="1" x:Name="btnPop"  />
+    <Button Text="Latino" Command="{Binding SelectCategory}" Grid.Row="1" Grid.Column="2" x:Name="btnLatino"  />
   </Grid>
 </ContentPage>

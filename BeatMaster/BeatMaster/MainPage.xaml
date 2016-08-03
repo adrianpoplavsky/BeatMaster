@@ -3,46 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:BeatMaster" x:Name="MainPage  "
              x:Class="BeatMaster.MainPage"  >
-  
-  <Grid x:Name="grdMain"   RowSpacing="10" ColumnSpacing="10" BindingContext="{local:MainMVVM}" >
+
+  <Grid x:Name="grdMain"   HorizontalOptions="FillAndExpand" ColumnSpacing="10" BindingContext="{local:MainMVVM}" >
     <Grid.RowDefinitions>
       <RowDefinition Height="Auto" />
       <RowDefinition Height="*" />
-      <RowDefinition Height="100" />
+      <RowDefinition Height="Auto" />
+      <!--<RowDefinition Height="Auto" />-->
     </Grid.RowDefinitions>
 
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="3*" />
+      <!--<ColumnDefinition Width="3*" />-->
+      <ColumnDefinition Width="Auto" />
       <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="3*" />
+      <!--<ColumnDefinition Width="Auto" />-->
     </Grid.ColumnDefinitions>
-    
+
     <Label
         Text="Beat Master -alpha-"
         TextColor="Lime" HorizontalTextAlignment="Center" FontSize="Large"
-        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
- 
-    <ListView Grid.Row="1" Grid.Column="0" x:Name="lvIntro"   ItemsSource="{Binding introItems}" >
-      <ListView.ItemTemplate  >
-        <DataTemplate >
-          <ViewCell>
-            <!--<ViewCell.ContextActions>
-              <MenuItem  Command="{Binding OnMore}" Text="More" />
-              <MenuItem Command="{Binding OnDelete}" Text="Delete" IsDestructive="True" />
-            </ViewCell.ContextActions>-->
-            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
-              <StackLayout Padding="5,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical" >
-                <Label Text="{Binding Name}" VerticalTextAlignment="Center" FontSize="10" />
-                <Label Text="hint: trigger a context action" VerticalTextAlignment="Center" FontSize="8" />
-              </StackLayout>
-              <Button Text=">" Command="{Binding Path=PlaySong}" />
-            </StackLayout>
+        Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" />
+
+    <ListView Grid.Row="1" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height,Factor=1,Constant=0}" 
+              SeparatorVisibility="None" HasUnevenRows="True" Grid.Column="0" x:Name="lvIntro"  HorizontalOptions="FillAndExpand"   ItemsSource="{Binding introItems}" >
+      <ListView.ItemTemplate   >
+        <DataTemplate  >
+          <ViewCell  >
+            <Grid >
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!--<ColumnDefinition Width="*" />-->
+                <ColumnDefinition Width="Auto" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition   />
+                <RowDefinition  />
+              </Grid.RowDefinitions>
+              <Label Text="{Binding Name}"  Grid.Row="0" Grid.Column="0"  VerticalTextAlignment="Center" FontSize="Large" />
+              <Label Text="{Binding ShortDescription}" Grid.Row="1" Grid.Column="0"   VerticalTextAlignment="Center" FontSize="Medium" />
+              <Button Text=">"   Command="{Binding Path=PlaySong}" Grid.Row="0" Grid.RowSpan="2" Grid.Column="1"   />
+            </Grid>
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
     </ListView>
-
-    <ListView Grid.Row="1" Grid.Column="2" x:Name="lvVerse" ItemsSource="{Binding introItems}" >
+    <Slider x:Name="sldSpeed" Value="{Binding SliderValue, Mode=TwoWay}"  Maximum="0.5" Minimum="-0.5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1"  />
+    <!--<ListView Grid.Row="1" Grid.Column="2" x:Name="lvVerse" ItemsSource="{Binding introItems}" >
       <ListView.ItemTemplate  >
         <DataTemplate >
           <ViewCell>
@@ -60,7 +66,7 @@
           </ViewCell>
         </DataTemplate>
       </ListView.ItemTemplate>
-    </ListView> 
+    </ListView>-->
   </Grid>
   <!--<Grid
     RowSpacing="10"
